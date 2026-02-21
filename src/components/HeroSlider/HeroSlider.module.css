@@ -1,0 +1,143 @@
+.hero {
+  position: relative;
+  height: 85vh;
+  min-height: 520px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+.bgWrapper { position: absolute; inset: 0; }
+.bgSlide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 20%;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  filter: saturate(0.7) brightness(0.55);
+  transform: scale(1.05);
+}
+.bgSlide.bgActive { opacity: 1; animation: kenBurns 8s ease-out forwards; }
+@keyframes kenBurns {
+  from { transform: scale(1.08); }
+  to { transform: scale(1.02); }
+}
+.gradients {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.5) 50%, transparent 100%),
+    linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.3) 30%, transparent 60%);
+  z-index: 1;
+}
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  gap: 2rem;
+  padding: 0 4% 5rem;
+  width: 100%;
+  animation: fadeIn 0.6s ease;
+}
+.posterThumb {
+  flex-shrink: 0;
+  width: 140px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+  display: none;
+}
+@media (min-width: 640px) { .posterThumb { display: block; } }
+.thumb { width: 100%; display: block; }
+.info { max-width: 600px; }
+.badges { display: flex; gap: 8px; margin-bottom: 1rem; align-items: center; }
+.badge {
+  background: rgba(229,9,20,0.2);
+  border: 1px solid rgba(229,9,20,0.4);
+  color: #ff6b6b;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.badgeYear {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #aaa;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  letter-spacing: 3px;
+  line-height: 1;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+.actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.playBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  color: #000;
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: 'DM Sans', sans-serif;
+  transition: all 0.2s;
+}
+.playBtn:hover { background: rgba(255,255,255,0.85); transform: scale(1.02); }
+.listBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(109,109,110,0.7);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: all 0.2s;
+  backdrop-filter: blur(4px);
+}
+.listBtn:hover { background: rgba(109,109,110,0.9); }
+.listBtn.inList { background: rgba(229,9,20,0.3); border-color: rgba(229,9,20,0.5); }
+.infoBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: all 0.2s;
+}
+.infoBtn:hover { background: rgba(255,255,255,0.2); }
+.dots {
+  position: absolute;
+  bottom: 2rem;
+  right: 4%;
+  z-index: 2;
+  display: flex;
+  gap: 6px;
+}
+.dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  transition: all 0.3s;
+}
+.dot.dotActive { width: 24px; border-radius: 3px; background: #e50914; }

@@ -1,0 +1,153 @@
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4%;
+  height: var(--navbar-height);
+  background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+  transition: background 0.3s ease;
+}
+.navbar.scrolled {
+  background: rgba(10,10,10,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.left { display: flex; align-items: center; gap: 2.5rem; }
+.logo {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.7rem;
+  letter-spacing: 4px;
+  color: white;
+  flex-shrink: 0;
+  transition: opacity 0.2s;
+}
+.logo:hover { opacity: 0.85; }
+.logo span { color: #e50914; }
+.links { display: flex; align-items: center; gap: 0.2rem; }
+.link {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #b3b3b3;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.link:hover { color: white; background: rgba(255,255,255,0.06); }
+.link.active { color: white; font-weight: 600; }
+.badge {
+  background: #e50914;
+  color: white;
+  font-size: 0.62rem;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+.right { display: flex; align-items: center; gap: 1rem; }
+.profileWrap { position: relative; }
+.avatar {
+  width: 36px; height: 36px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #e50914, #b00020);
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  font-family: 'DM Sans', sans-serif;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s;
+  border: 2px solid transparent;
+}
+.avatar:hover { transform: scale(1.05); border-color: rgba(255,255,255,0.2); }
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  background: rgba(20,20,20,0.98);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  min-width: 220px;
+  padding: 8px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+  animation: scaleIn 0.18s ease;
+  transform-origin: top right;
+}
+.dropdownUser {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+}
+.dropdownAvatar {
+  width: 40px; height: 40px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #e50914, #b00020);
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.dropdownName { font-weight: 600; font-size: 0.9rem; }
+.dropdownEmail { color: #666; font-size: 0.75rem; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 140px; }
+.dropdownDivider { height: 1px; background: rgba(255,255,255,0.07); margin: 6px 0; }
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-family: 'DM Sans', sans-serif;
+  color: #ccc;
+  background: none;
+  text-align: left;
+  transition: all 0.15s;
+}
+.dropdownItem:hover { background: rgba(255,255,255,0.07); color: white; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  padding: 6px;
+  border-radius: 6px;
+}
+.hamburger span {
+  display: block;
+  width: 22px; height: 2px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+.spanOpen1 { transform: translateY(7px) rotate(45deg); }
+.spanOpen2 { opacity: 0; transform: scaleX(0); }
+.spanOpen3 { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 900px) {
+  .links { display: none; }
+  .links.open {
+    display: flex;
+    position: fixed;
+    top: var(--navbar-height); left: 0; right: 0;
+    background: rgba(10,10,10,0.98);
+    flex-direction: column;
+    padding: 1.5rem 4%;
+    gap: 0.3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    animation: fadeIn 0.2s ease;
+  }
+  .links.open .link { font-size: 1rem; padding: 12px 16px; }
+  .hamburger { display: flex; }
+  .left { gap: 0; }
+}
